@@ -2,7 +2,6 @@
 const nextConfig = {
   // Disable experimental features that slow down dev
   experimental: {
-    optimizeCss: process.env.NODE_ENV === 'production',
     optimizePackageImports: process.env.NODE_ENV === 'production' 
       ? ['framer-motion', 'recharts', 'lucide-react'] 
       : [],
