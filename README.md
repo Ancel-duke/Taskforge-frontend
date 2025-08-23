@@ -44,7 +44,7 @@ A modern, responsive task and project management application built with Next.js,
    
    Update `.env.local` with your configuration:
    ```env
-   NEXT_PUBLIC_API_URL=https://taskforge-5wdo.onrender.com
+   NEXT_PUBLIC_API_URL=your render url
    NEXT_PUBLIC_ENABLE_ANALYTICS=false
    NEXT_PUBLIC_ENABLE_DEBUG=false
    ```
