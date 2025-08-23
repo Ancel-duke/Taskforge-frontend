@@ -1,0 +1,47 @@
+{
+  "name": "taskforge-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbo",
+    "dev:fast": "NODE_ENV=development NEXT_TURBO=1 next dev --turbo",
+    "dev:clean": "rm -rf .next && rm -rf node_modules/.cache && npm run dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "analyze": "ANALYZE=true next build",
+    "performance": "node scripts/performance.js",
+    "export": "next build && next export",
+    "postbuild": "echo 'Build completed successfully'",
+    "build:static": "next build && next export",
+    "deploy:preview": "npm run build && npm run start"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "dependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "axios": "^1.4.0",
+    "framer-motion": "^10.12.0",
+    "lucide-react": "^0.263.1",
+    "next": "14.2.31",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "recharts": "^2.6.2",
+    "socket.io-client": "^4.6.1",
+    "typescript": "^5.0.0",
+    "zustand": "^4.3.8"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/jsonwebtoken": "^9.0.2",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.40.0",
+    "eslint-config-next": "14.2.31",
+    "postcss": "^8.4.24",
+    "tailwindcss": "^3.3.2"
+  }
+}
