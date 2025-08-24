@@ -91,6 +91,12 @@ export default function TeamPage() {
       return
     }
 
+    // Don't search if query is less than 2 characters
+    if (query.trim().length < 2) {
+      setSearchResults([])
+      return
+    }
+
     try {
       setError('')
       const results = await userAPI.searchUsers(query)
@@ -489,7 +495,7 @@ export default function TeamPage() {
                       type="text"
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      placeholder="Search by username..."
+                      placeholder="Search by username (min. 2 characters)..."
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
                     />
                   </div>
@@ -543,7 +549,14 @@ export default function TeamPage() {
                     </div>
                   )}
 
-                  {searchQuery && searchResults.length === 0 && (
+                  {searchQuery && searchQuery.trim().length < 2 && (
+                    <div className="text-center py-8">
+                      <AlertCircle className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                      <p className="text-gray-500">Please enter at least 2 characters to search</p>
+                    </div>
+                  )}
+
+                  {searchQuery && searchQuery.trim().length >= 2 && searchResults.length === 0 && (
                     <div className="text-center py-8">
                       <AlertCircle className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                       <p className="text-gray-500">No users found</p>

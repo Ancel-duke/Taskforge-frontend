@@ -28,6 +28,12 @@ export default function InviteMemberModal({ projectId, onClose, onInvite, existi
       return
     }
 
+    // Don't search if query is less than 2 characters
+    if (query.trim().length < 2) {
+      setSearchResults([])
+      return
+    }
+
     try {
       setLoading(true)
       setError('')
@@ -111,7 +117,7 @@ export default function InviteMemberModal({ projectId, onClose, onInvite, existi
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input
                 type="text"
-                placeholder="Search by username..."
+                placeholder="Search by username (min. 2 characters)..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
@@ -144,6 +150,13 @@ export default function InviteMemberModal({ projectId, onClose, onInvite, existi
               {loading ? (
                 <div className="flex items-center justify-center py-8">
                   <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
+                </div>
+              ) : searchQuery && searchQuery.trim().length < 2 ? (
+                <div className="text-center py-8">
+                  <User className="w-12 h-12 text-gray-400 mx-auto mb-3" />
+                  <p className="text-gray-500">
+                    Please enter at least 2 characters to search
+                  </p>
                 </div>
               ) : searchQuery && searchResults.length === 0 ? (
                 <div className="text-center py-8">
