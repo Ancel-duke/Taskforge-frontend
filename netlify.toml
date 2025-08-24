@@ -7,9 +7,10 @@
   NODE_VERSION = "18"
   NPM_VERSION = "9"
 
+# Handle client-side routing for Next.js
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/"
   status = 200
 
 [[headers]]
