@@ -298,8 +298,8 @@ export default function DashboardPage() {
         >
           <div className="flex items-center justify-between mb-4">
                          <h2 className="text-lg font-semibold text-gray-900">Recent Tasks</h2>
-            <Link href="/tasks" className="btn btn-secondary text-sm px-3 py-1">
-              View All Tasks
+            <Link href="/projects" className="btn btn-secondary text-sm px-3 py-1">
+              View All Projects
             </Link>
           </div>
           
