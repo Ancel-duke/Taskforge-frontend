@@ -37,12 +37,12 @@
 
 [context.production.environment]
   NODE_ENV = "production"
-  NEXT_PUBLIC_API_URL = "https://your-backend-url.onrender.com"
+  NEXT_PUBLIC_API_URL = "https://taskforge-5wdo.onrender.com"
 
 [context.deploy-preview.environment]
   NODE_ENV = "preview"
-  NEXT_PUBLIC_API_URL = "https://your-backend-url.onrender.com"
+  NEXT_PUBLIC_API_URL = "https://taskforge-5wdo.onrender.com"
 
 [context.branch-deploy.environment]
   NODE_ENV = "development"
-  NEXT_PUBLIC_API_URL = "https://your-backend-url.onrender.com"
+  NEXT_PUBLIC_API_URL = "https://taskforge-5wdo.onrender.com"
