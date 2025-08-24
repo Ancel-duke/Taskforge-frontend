@@ -44,39 +44,13 @@ export default function TeamPage() {
         allMembers.add(inv.invitee._id)
       })
       
-      // For demo purposes, we'll create mock team members
-      // In a real app, you'd fetch actual team members
-      const mockTeamMembers: User[] = [
-        {
-          _id: '1',
-          username: 'flaveen',
-          name: 'Flaveen Aliviza',
-          avatar: undefined,
-          dateJoined: new Date().toISOString(),
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString()
-        },
-        {
-          _id: '2',
-          username: 'john',
-          name: 'John Doe',
-          avatar: undefined,
-          dateJoined: new Date().toISOString(),
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString()
-        },
-        {
-          _id: '3',
-          username: 'jane',
-          name: 'Jane Smith',
-          avatar: undefined,
-          dateJoined: new Date().toISOString(),
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString()
-        }
-      ]
-      
-      setTeamMembers(mockTeamMembers)
+             // For now, we'll only show the current user as a team member
+       // In a real app, you'd fetch actual team members from projects
+       if (user) {
+         setTeamMembers([user])
+       } else {
+         setTeamMembers([])
+       }
     } catch (err: any) {
       setError('Failed to load team data')
       console.error('Error loading team data:', err)
@@ -184,6 +158,21 @@ export default function TeamPage() {
     }
   }
 
+  // Debug function to test user search
+  const debugUserSearch = async () => {
+    try {
+      console.log('Testing user search...')
+      const allUsers = await userAPI.getAllUsers()
+      console.log('All users in database:', allUsers)
+      
+      // Test search with a common pattern
+      const searchResults = await userAPI.searchUsers('test')
+      console.log('Search results for "test":', searchResults)
+    } catch (err: any) {
+      console.error('Debug search error:', err)
+    }
+  }
+
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       searchUsers(searchQuery)
@@ -220,13 +209,21 @@ export default function TeamPage() {
                 Manage your team and collaborate effectively
               </p>
             </div>
-            <button 
-              onClick={() => setIsInviteModalOpen(true)}
-              className="btn btn-primary flex items-center space-x-2"
-            >
-              <UserPlus className="w-4 h-4" />
-              <span>Invite Member</span>
-            </button>
+                         <div className="flex space-x-2">
+               <button 
+                 onClick={() => setIsInviteModalOpen(true)}
+                 className="btn btn-primary flex items-center space-x-2"
+               >
+                 <UserPlus className="w-4 h-4" />
+                 <span>Invite Member</span>
+               </button>
+               <button 
+                 onClick={debugUserSearch}
+                 className="btn btn-secondary flex items-center space-x-2"
+               >
+                 <span>Debug Search</span>
+               </button>
+             </div>
           </div>
 
           {/* Success/Error Messages */}
@@ -337,9 +334,9 @@ export default function TeamPage() {
                 </div>
                 <div className="ml-4">
                   <p className="text-sm font-medium text-gray-600">Active Projects</p>
-                  <p className="text-2xl font-bold text-gray-900">
-                    {teamMembers.length * 2}
-                  </p>
+                                     <p className="text-2xl font-bold text-gray-900">
+                     0
+                   </p>
                 </div>
               </div>
             </motion.div>
@@ -356,9 +353,9 @@ export default function TeamPage() {
                 </div>
                 <div className="ml-4">
                   <p className="text-sm font-medium text-gray-600">Total Tasks</p>
-                  <p className="text-2xl font-bold text-gray-900">
-                    {teamMembers.length * 5}
-                  </p>
+                                     <p className="text-2xl font-bold text-gray-900">
+                     0
+                   </p>
                 </div>
               </div>
             </motion.div>
@@ -433,18 +430,18 @@ export default function TeamPage() {
 
                   {/* Member Stats */}
                   <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                    <div className="text-center">
-                      <p className="text-lg font-semibold text-gray-900">
-                        {Math.floor(Math.random() * 5) + 1}
-                      </p>
-                      <p className="text-xs text-gray-600">Projects</p>
-                    </div>
-                    <div className="text-center">
-                      <p className="text-lg font-semibold text-gray-900">
-                        {Math.floor(Math.random() * 10) + 5}
-                      </p>
-                      <p className="text-xs text-gray-600">Tasks</p>
-                    </div>
+                                         <div className="text-center">
+                       <p className="text-lg font-semibold text-gray-900">
+                         0
+                       </p>
+                       <p className="text-xs text-gray-600">Projects</p>
+                     </div>
+                     <div className="text-center">
+                       <p className="text-lg font-semibold text-gray-900">
+                         0
+                       </p>
+                       <p className="text-xs text-gray-600">Tasks</p>
+                     </div>
                     <div className="text-center">
                       <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-primary-100 text-primary-800">
                         Active

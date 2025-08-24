@@ -75,6 +75,12 @@ export const userAPI = {
     const response = await api.get(`/users/search?username=${username}`)
     return response.data
   },
+
+  // Debug function to get all users
+  getAllUsers: async (): Promise<User[]> => {
+    const response = await api.get('/users/all')
+    return response.data
+  },
 }
 
 // Project API
