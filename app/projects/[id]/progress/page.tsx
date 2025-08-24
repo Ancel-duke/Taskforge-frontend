@@ -16,7 +16,6 @@ import {
 import { useStore } from '@/store/useStore'
 import { projectAPI } from '@/lib/api'
 import { Project, Task } from '@/types'
-import DashboardLayout from '@/components/layout/DashboardLayout'
 
 
 
@@ -49,26 +48,22 @@ export default function ProjectProgressPage() {
 
   if (loading) {
     return (
-      <DashboardLayout>
-        <div className="flex items-center justify-center h-64">
-          <div className="w-8 h-8 border-4 border-primary-600 border-t-transparent rounded-full animate-spin" />
-        </div>
-      </DashboardLayout>
+      <div className="flex items-center justify-center h-64">
+        <div className="w-8 h-8 border-4 border-primary-600 border-t-transparent rounded-full animate-spin" />
+      </div>
     )
   }
 
   if (error || !project) {
     return (
-      <DashboardLayout>
-        <div className="flex items-center justify-center h-64">
-          <div className="text-center max-w-md mx-auto p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">
-              Error Loading Project
-            </h2>
-            <p className="text-gray-600 mb-4">{error || 'Project not found'}</p>
-          </div>
+      <div className="flex items-center justify-center h-64">
+        <div className="text-center max-w-md mx-auto p-6">
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">
+            Error Loading Project
+          </h2>
+          <p className="text-gray-600 mb-4">{error || 'Project not found'}</p>
         </div>
-      </DashboardLayout>
+      </div>
     )
   }
 
@@ -113,8 +108,7 @@ export default function ProjectProgressPage() {
   const recentActivity = getRecentActivity()
 
   return (
-    <DashboardLayout>
-      <div className="p-6">
+    <div className="p-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -336,6 +330,5 @@ export default function ProjectProgressPage() {
             </motion.div>
         </motion.div>
       </div>
-    </DashboardLayout>
   )
 }

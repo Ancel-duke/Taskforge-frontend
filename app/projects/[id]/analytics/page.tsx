@@ -5,7 +5,6 @@ import { TrendingUp, Users, CheckCircle, Clock, AlertCircle, Calendar } from 'lu
 import { useStore } from '@/store/useStore'
 import { projectAPI } from '@/lib/api'
 import { Project, Analytics } from '@/types'
-import DashboardLayout from '@/components/layout/DashboardLayout'
 
 
 
@@ -67,25 +66,21 @@ export default function AnalyticsPage() {
 
   if (loading) {
     return (
-      <DashboardLayout>
-        <div className="flex items-center justify-center min-h-screen">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
-        </div>
-      </DashboardLayout>
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
+      </div>
     )
   }
 
   if (error || !project || !analytics) {
     return (
-      <DashboardLayout>
-        <div className="flex items-center justify-center min-h-screen">
-          <div className="text-center">
-            <AlertCircle className="h-12 w-12 text-red-500 mx-auto mb-4" />
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">Error Loading Analytics</h2>
-            <p className="text-gray-600">{error || 'Project not found'}</p>
-          </div>
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <AlertCircle className="h-12 w-12 text-red-500 mx-auto mb-4" />
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">Error Loading Analytics</h2>
+          <p className="text-gray-600">{error || 'Project not found'}</p>
         </div>
-      </DashboardLayout>
+      </div>
     )
   }
 
@@ -117,22 +112,21 @@ export default function AnalyticsPage() {
   ]
 
   return (
-    <DashboardLayout>
-      <div className="p-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          {/* Header */}
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
-              {project.name} Analytics
-            </h1>
-            <p className="text-gray-600">
-              Track your project's performance and team activity
-            </p>
-          </div>
+    <div className="p-6">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            {project.name} Analytics
+          </h1>
+          <p className="text-gray-600">
+            Track your project's performance and team activity
+          </p>
+        </div>
 
           {/* Key Metrics */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -332,6 +326,5 @@ export default function AnalyticsPage() {
           </div>
         </motion.div>
       </div>
-    </DashboardLayout>
   )
 }
