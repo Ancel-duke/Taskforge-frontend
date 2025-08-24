@@ -74,9 +74,18 @@ export default function TeamPage() {
     try {
       setError('')
       const results = await userAPI.searchUsers(query)
+      
+      // Ensure results is an array
+      if (!Array.isArray(results)) {
+        console.error('Search results is not an array:', results)
+        setSearchResults([])
+        return
+      }
+      
       // Filter out current user and existing team members
       const existingMemberIds = teamMembers.map(member => member._id)
       const filteredResults = results.filter(user => 
+        user && user._id && 
         !existingMemberIds.includes(user._id) && 
         user._id !== user?._id
       )
@@ -84,6 +93,7 @@ export default function TeamPage() {
     } catch (err: any) {
       setError('Failed to search users')
       console.error('Error searching users:', err)
+      setSearchResults([])
     }
   }
 
@@ -158,20 +168,7 @@ export default function TeamPage() {
     }
   }
 
-  // Debug function to test user search
-  const debugUserSearch = async () => {
-    try {
-      console.log('Testing user search...')
-      const allUsers = await userAPI.getAllUsers()
-      console.log('All users in database:', allUsers)
-      
-      // Test search with a common pattern
-      const searchResults = await userAPI.searchUsers('test')
-      console.log('Search results for "test":', searchResults)
-    } catch (err: any) {
-      console.error('Debug search error:', err)
-    }
-  }
+
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -209,21 +206,13 @@ export default function TeamPage() {
                 Manage your team and collaborate effectively
               </p>
             </div>
-                         <div className="flex space-x-2">
-               <button 
-                 onClick={() => setIsInviteModalOpen(true)}
-                 className="btn btn-primary flex items-center space-x-2"
-               >
-                 <UserPlus className="w-4 h-4" />
-                 <span>Invite Member</span>
-               </button>
-               <button 
-                 onClick={debugUserSearch}
-                 className="btn btn-secondary flex items-center space-x-2"
-               >
-                 <span>Debug Search</span>
-               </button>
-             </div>
+                         <button 
+               onClick={() => setIsInviteModalOpen(true)}
+               className="btn btn-primary flex items-center space-x-2"
+             >
+               <UserPlus className="w-4 h-4" />
+               <span>Invite Member</span>
+             </button>
           </div>
 
           {/* Success/Error Messages */}

@@ -38,12 +38,23 @@ export default function InviteMemberModal({ projectId, onClose, onInvite, existi
       setLoading(true)
       setError('')
       const results = await userAPI.searchUsers(query)
+      
+      // Ensure results is an array
+      if (!Array.isArray(results)) {
+        console.error('Search results is not an array:', results)
+        setSearchResults([])
+        return
+      }
+      
       // Filter out users who are already members
-      const filteredResults = results.filter(user => !existingMemberIds.includes(user._id))
+      const filteredResults = results.filter(user => 
+        user && user._id && !existingMemberIds.includes(user._id)
+      )
       setSearchResults(filteredResults)
     } catch (err: any) {
       setError('Failed to search users')
       console.error('Error searching users:', err)
+      setSearchResults([])
     } finally {
       setLoading(false)
     }
