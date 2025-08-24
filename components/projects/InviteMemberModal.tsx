@@ -126,8 +126,13 @@ export default function InviteMemberModal({ projectId, onClose, onInvite, existi
             {/* Search Input */}
             <div className="relative mb-6">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <label htmlFor="user-search" className="sr-only">
+                Search users
+              </label>
               <input
                 type="text"
+                id="user-search"
+                name="user-search"
                 placeholder="Search by username (min. 2 characters)..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}

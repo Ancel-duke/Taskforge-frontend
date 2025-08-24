@@ -473,18 +473,20 @@ export default function TeamPage() {
                     </button>
                   </div>
 
-                  <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Search Users
-                    </label>
-                    <input
-                      type="text"
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      placeholder="Search by username (min. 2 characters)..."
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
-                    />
-                  </div>
+                                     <div className="mb-4">
+                     <label htmlFor="team-user-search" className="block text-sm font-medium text-gray-700 mb-2">
+                       Search Users
+                     </label>
+                     <input
+                       type="text"
+                       id="team-user-search"
+                       name="team-user-search"
+                       value={searchQuery}
+                       onChange={(e) => setSearchQuery(e.target.value)}
+                       placeholder="Search by username (min. 2 characters)..."
+                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                     />
+                   </div>
 
                   {searchResults.length > 0 && (
                     <div className="space-y-2 max-h-60 overflow-y-auto">

@@ -57,12 +57,20 @@ export default function TestPage() {
             <div className="card p-6">
               <h2 className="text-xl font-semibold mb-4">Form Elements</h2>
               <div className="space-y-4">
+                <label htmlFor="test-input" className="block text-sm font-medium text-gray-700 mb-2">
+                  Test Input
+                </label>
                 <input
                   type="text"
+                  id="test-input"
+                  name="test-input"
                   placeholder="Input field"
                   className="input"
                 />
-                <select className="input">
+                <label htmlFor="test-select" className="block text-sm font-medium text-gray-700 mb-2">
+                  Test Select
+                </label>
+                <select id="test-select" name="test-select" className="input">
                   <option>Select option</option>
                   <option>Option 1</option>
                   <option>Option 2</option>

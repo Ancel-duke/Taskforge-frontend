@@ -41,8 +41,13 @@ export default function SearchBar({ onSearch, className = '' }: SearchBarProps) 
       {/* Main Search Input */}
       <div className="relative">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+        <label htmlFor="search-keyword" className="sr-only">
+          Search tasks
+        </label>
         <input
           type="text"
+          id="search-keyword"
+          name="search-keyword"
           placeholder="Search tasks..."
           value={filters.keyword}
           onChange={(e) => handleFilterChange('keyword', e.target.value)}
@@ -84,7 +89,12 @@ export default function SearchBar({ onSearch, className = '' }: SearchBarProps) 
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Priority
               </label>
+              <label htmlFor="priority-filter" className="block text-sm font-medium text-gray-700 mb-2">
+                Priority
+              </label>
               <select
+                id="priority-filter"
+                name="priority-filter"
                 value={filters.priority}
                 onChange={(e) => handleFilterChange('priority', e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
@@ -102,7 +112,12 @@ export default function SearchBar({ onSearch, className = '' }: SearchBarProps) 
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Status
               </label>
+              <label htmlFor="status-filter" className="block text-sm font-medium text-gray-700 mb-2">
+                Status
+              </label>
               <select
+                id="status-filter"
+                name="status-filter"
                 value={filters.status}
                 onChange={(e) => handleFilterChange('status', e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"

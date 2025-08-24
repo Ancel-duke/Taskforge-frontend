@@ -94,11 +94,12 @@ export default function EditTaskModal({ task, projectId, onClose, onUpdate, memb
           <form onSubmit={handleSubmit} className="p-6 space-y-4">
             {/* Title */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="edit-title" className="block text-sm font-medium text-gray-700 mb-2">
                 Title *
               </label>
               <input
                 type="text"
+                id="edit-title"
                 name="title"
                 value={formData.title}
                 onChange={handleChange}
@@ -110,10 +111,11 @@ export default function EditTaskModal({ task, projectId, onClose, onUpdate, memb
 
             {/* Description */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="edit-description" className="block text-sm font-medium text-gray-700 mb-2">
                 Description
               </label>
               <textarea
+                id="edit-description"
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
@@ -126,10 +128,11 @@ export default function EditTaskModal({ task, projectId, onClose, onUpdate, memb
             {/* Priority and Status */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="edit-priority" className="block text-sm font-medium text-gray-700 mb-2">
                   Priority
                 </label>
                 <select
+                  id="edit-priority"
                   name="priority"
                   value={formData.priority}
                   onChange={handleChange}
@@ -142,10 +145,11 @@ export default function EditTaskModal({ task, projectId, onClose, onUpdate, memb
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="edit-status" className="block text-sm font-medium text-gray-700 mb-2">
                   Status
                 </label>
                 <select
+                  id="edit-status"
                   name="status"
                   value={formData.status}
                   onChange={handleChange}
@@ -160,12 +164,13 @@ export default function EditTaskModal({ task, projectId, onClose, onUpdate, memb
 
             {/* Due Date */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="edit-due-date" className="block text-sm font-medium text-gray-700 mb-2">
                 Due Date
               </label>
               <div className="relative">
                 <input
                   type="date"
+                  id="edit-due-date"
                   name="dueDate"
                   value={formData.dueDate}
                   onChange={handleChange}
@@ -177,11 +182,12 @@ export default function EditTaskModal({ task, projectId, onClose, onUpdate, memb
 
             {/* Assigned To */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="edit-assigned-to" className="block text-sm font-medium text-gray-700 mb-2">
                 Assign To
               </label>
               <div className="relative">
                 <select
+                  id="edit-assigned-to"
                   name="assignedTo"
                   value={formData.assignedTo}
                   onChange={handleChange}
