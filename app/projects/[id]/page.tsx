@@ -9,7 +9,7 @@ import { projectAPI } from '@/lib/api'
 import { Project } from '@/types'
 import DashboardLayout from '@/components/layout/DashboardLayout'
 import KanbanBoard from '@/components/kanban/KanbanBoard'
-import ProjectNavigation from '@/components/projects/ProjectNavigation'
+
 import { useSocket } from '@/components/providers/SocketProvider'
 import InviteMemberModal from '@/components/projects/InviteMemberModal'
 
@@ -110,7 +110,6 @@ export default function ProjectPage() {
   return (
     <DashboardLayout>
       <div className="h-screen flex flex-col">
-        <ProjectNavigation project={project} activeTab="kanban" />
         <KanbanBoard 
           project={project} 
           onInviteMember={() => setIsInviteModalOpen(true)}

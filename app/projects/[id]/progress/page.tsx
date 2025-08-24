@@ -17,7 +17,7 @@ import { useStore } from '@/store/useStore'
 import { projectAPI } from '@/lib/api'
 import { Project, Task } from '@/types'
 import DashboardLayout from '@/components/layout/DashboardLayout'
-import ProjectNavigation from '@/components/projects/ProjectNavigation'
+
 
 
 
@@ -114,10 +114,7 @@ export default function ProjectProgressPage() {
 
   return (
     <DashboardLayout>
-      <div className="h-screen flex flex-col">
-        <ProjectNavigation project={project} activeTab="progress" />
-        
-        <div className="flex-1 overflow-auto p-6">
+      <div className="p-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -337,8 +334,7 @@ export default function ProjectProgressPage() {
                 ))}
               </div>
             </motion.div>
-          </motion.div>
-        </div>
+        </motion.div>
       </div>
     </DashboardLayout>
   )
