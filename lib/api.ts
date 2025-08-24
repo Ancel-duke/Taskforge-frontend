@@ -99,6 +99,11 @@ export const projectAPI = {
     return response.data
   },
 
+  getProjectTasks: async (projectId: string): Promise<Task[]> => {
+    const response = await api.get(`/projects/${projectId}/tasks`)
+    return response.data
+  },
+
   getAnalytics: async (projectId: string): Promise<Analytics> => {
     const response = await api.get(`/projects/${projectId}/analytics`)
     return response.data
