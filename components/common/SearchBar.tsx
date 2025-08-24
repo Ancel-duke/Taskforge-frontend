@@ -86,9 +86,6 @@ export default function SearchBar({ onSearch, className = '' }: SearchBarProps) 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Priority Filter */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Priority
-              </label>
               <label htmlFor="priority-filter" className="block text-sm font-medium text-gray-700 mb-2">
                 Priority
               </label>
@@ -109,9 +106,6 @@ export default function SearchBar({ onSearch, className = '' }: SearchBarProps) 
 
             {/* Status Filter */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Status
-              </label>
               <label htmlFor="status-filter" className="block text-sm font-medium text-gray-700 mb-2">
                 Status
               </label>
