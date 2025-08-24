@@ -19,7 +19,6 @@ const nextConfig = {
   
   // Output configuration
   output: 'standalone',
-  trailingSlash: true,
   
   // Environment variables
   env: {
@@ -91,24 +90,7 @@ const nextConfig = {
     return []
   },
   
-  // Redirects for SPA routing (only in production)
-  async redirects() {
-    if (process.env.NODE_ENV === 'production') {
-      return [
-        {
-          source: '/dashboard',
-          destination: '/dashboard/',
-          permanent: true,
-        },
-        {
-          source: '/projects',
-          destination: '/projects/',
-          permanent: true,
-        },
-      ]
-    }
-    return []
-  },
+
 }
 
 module.exports = nextConfig
